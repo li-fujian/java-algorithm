@@ -23,14 +23,32 @@ public class Demo009 {
         System.out.println(mySolution(e));  // true
         System.out.println(mySolution(f));  // false
         System.out.println(mySolution(m));  // false  但反转时 发生了数据溢出
-        System.out.println(m);  // 2147483647
+        System.out.println("------");
+        System.out.println(isPalindrome(a));  // true
+        System.out.println(isPalindrome(b));  // true
+        System.out.println(isPalindrome(c));  // false
+        System.out.println(isPalindrome(d));  // true
+        System.out.println(isPalindrome(e));  // true
+        System.out.println(isPalindrome(f));  // false
+        System.out.println(isPalindrome(m));  // false 这种就不会出现溢出的情况了
     }
 
     /**
-     * 官网答案 TODO
+     * 官网答案 
+     * 只需要反转一半即可
      */
     public static boolean isPalindrome(int x) {
-        return false;
+        if (x < 0 || ((x != 0) && (x % 10) == 0)) {
+            return false;
+        }
+        
+        int rev = 0;
+        while (x > rev) {
+        	rev = rev * 10 + x % 10;
+        	x = x /10;
+        }
+
+        return (x == rev) || (x == rev/10);
 
     }
 
